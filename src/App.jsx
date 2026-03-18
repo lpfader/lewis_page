@@ -1,19 +1,19 @@
-import Message from './Message';
-import Counter from './Counter';
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import Main from "./pages/Main";
+import Resume from "./pages/Resume";
+import Film35mm from "./pages/Film35mm";
+import Film120mm from "./pages/Film120mm";
 
 function App() {
   return (
-    <div>
-      <h1>Proof of concept</h1>
-      <h2>this is a second header</h2>
-        <p>This is your first custom React component.</p>
-        <Message />
-        <ul>
-          <li>list item&nbsp;1</li>
-          <li>secondary list item.</li>
-        </ul>
-        <Counter />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/resume" element={<Resume />} />
+        <Route path="/35mm" element={<Film35mm />} />
+        <Route path="/120mm" element={<Film120mm />} />
+      </Routes>
+    </Router>
   );
 }
 
