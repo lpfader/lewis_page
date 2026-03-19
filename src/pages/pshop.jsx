@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import PShopDescription from "../components/PShopDescription";
 import project1 from "../assets/pshop/mltc-msaa-final-5.png";
 import project2 from "../assets/pshop/MLTC-MSAA-layered.png";
 import project3 from "../assets/pshop/final-pride-2.png";
@@ -23,6 +23,7 @@ export default function PShop() {
 
   return (
     <>
+     <PShopDescription />
       {/* Image Grid */}
       <div
         style={{
