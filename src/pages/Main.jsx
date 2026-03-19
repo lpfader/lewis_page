@@ -36,7 +36,7 @@ export default function Main() {
     e.currentTarget.style.transform = "translateY(0)";
         }}
       >
-        View Resume →
+        View Resume
       </a>
 
      <a
@@ -57,7 +57,7 @@ export default function Main() {
     e.currentTarget.style.transform = "translateY(0)";
   }}
 >
-  35mm Film →
+  35mm Film
 </a>
 
       <a
@@ -77,7 +77,7 @@ export default function Main() {
     e.currentTarget.style.color = "#1C515A";
     e.currentTarget.style.transform = "translateY(0)";        }}
       >
-        120mm Film →
+        120mm Film
       </a>
 <a
   href="#/mpbsdp"
@@ -88,9 +88,37 @@ export default function Main() {
     textDecoration: "none",
     transition: "color 0.3s ease, transform 0.3s ease"
   }}
+  onMouseOver={(e) => {
+    e.currentTarget.style.color = "#0E2A30";
+    e.currentTarget.style.transform = "translateY(-3px)";
+  }}
+  onMouseOut={(e) => {
+    e.currentTarget.style.color = "#1C515A";
+    e.currentTarget.style.transform = "translateY(0)";
+  }}
 >
-Presentation examining accessibility<br /> 
-on MPBSDP's ontario.ca presence →
+Accessibility for MPBSDP on ontario.ca
+</a>
+
+<a
+  href="#/pshop"
+  style={{
+    marginTop: "20px",
+    color: "#1C515A",
+    fontSize: "20px",
+    textDecoration: "none",
+    transition: "color 0.3s ease, transform 0.3s ease"
+  }}
+  onMouseOver={(e) => {
+    e.currentTarget.style.color = "#0E2A30";
+    e.currentTarget.style.transform = "translateY(-3px)";
+  }}
+  onMouseOut={(e) => {
+    e.currentTarget.style.color = "#1C515A";
+    e.currentTarget.style.transform = "translateY(0)";
+  }}
+>
+Photoshop Projects
 </a>
 
       <div
