@@ -1,3 +1,4 @@
+import SkillsTable from "../components/SkillsTable";
 import Tealline from "./Tealline";
 import "../Style.css";
 export default function Resume() {
@@ -208,6 +209,7 @@ export default function Resume() {
   <li>Interacted  with global citizens using English, Mandarin Chinese.</li>
 </ul>
 		</section>
+    <SkillsTable />
     </div>
   );
 }

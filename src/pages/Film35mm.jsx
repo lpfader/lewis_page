@@ -36,8 +36,24 @@ function FilmGrid({ folder, images }) {
 
 export default function Film35mm() {
   const images = [
-    "000014.BMP",
-    "000030.BMP"];
+"000009-1.jpg",
+"000010.jpg",
+"000011-1.jpg",
+"000013.jpg",
+"000014.BMP",
+"000020.jpg",
+"000027.JPG",
+"000029.jpg",
+"000030.BMP",
+"000031.JPG",
+"000059770022.jpg",
+"030303.jpg",
+"050505.jpg",
+"060606.jpg",
+"323232.jpg",
+"DSCN2271.JPG",
+"hong_kong_from_the_peak.jpg",
+"lomopic.jpg"];
 
   return <FilmGrid folder="35mmfilm" images={images} />;
 }

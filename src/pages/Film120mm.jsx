@@ -36,14 +36,11 @@ function FilmGrid({ folder, images }) {
 
 export default function Film120mm() {
   const images = [
-"000001 2.JPG",
+
 "000001-2.jpg",
-"000003 2.JPG",
-"000005 2.JPG",
-"000005-1.jpg",
 "000005.JPG",
+"000067.jpg",
 "000005111111.JPG",
-"000009 1.JPG",
 "000009-1.jpg",
 "000011.jpg",
 "0000111111.JPG",
@@ -52,7 +49,6 @@ export default function Film120mm() {
 "000019.JPG",
 "000051.jpg",
 "000053.jpg",
-"000067.jpg",
 "000069-1.jpg",
 "000077.jpg",
 "000091-1.jpg"
