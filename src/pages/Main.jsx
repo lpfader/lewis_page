@@ -57,46 +57,7 @@ export default function Main() {
   }}
 >
 Accessibility Review for MPBSDP on Ontario.ca
-</a>
-<a
-        href="#/120mm"
-  style={{
-    marginTop: "20px",
-    color: "#1C515A",
-    fontSize: "20px",
-    textDecoration: "none",
-    transition: "color 0.3s ease, transform 0.3s ease"
-  }}
-  onMouseOver={(e) => {
-    e.currentTarget.style.color = "#0E2A30";
-    e.currentTarget.style.transform = "translateY(-3px)";
-  }}
-  onMouseOut={(e) => {
-    e.currentTarget.style.color = "#1C515A";
-    e.currentTarget.style.transform = "translateY(0)";        }}
-      >
-        120mm Film
-      </a>
-      <a
-  href="#/35mm"
-  style={{
-    marginTop: "20px",
-    color: "#1C515A",
-    fontSize: "20px",
-    textDecoration: "none",
-    transition: "color 0.3s ease, transform 0.3s ease"
-  }}
-  onMouseOver={(e) => {
-    e.currentTarget.style.color = "#0E2A30";
-    e.currentTarget.style.transform = "translateY(-3px)";
-  }}
-  onMouseOut={(e) => {
-    e.currentTarget.style.color = "#1C515A";
-    e.currentTarget.style.transform = "translateY(0)";
-  }}
->
-  35mm Film
-</a>     
+</a>  
 <a
   href="#/pshop"
   style={{
@@ -135,7 +96,7 @@ Photoshop Projects
     e.currentTarget.style.transform = "translateY(0)";
   }}
 >
-  35mm Film
+  35mm Film Collection
 </a>
       <div
   style={{
@@ -153,7 +114,25 @@ Photoshop Projects
       marginBottom: "20px"
     }}
   />
-
+<a
+        href="#/120mm"
+  style={{
+    marginTop: "20px",
+    color: "#1C515A",
+    fontSize: "20px",
+    textDecoration: "none",
+    transition: "color 0.3s ease, transform 0.3s ease"
+  }}
+  onMouseOver={(e) => {
+    e.currentTarget.style.color = "#0E2A30";
+    e.currentTarget.style.transform = "translateY(-3px)";
+  }}
+  onMouseOut={(e) => {
+    e.currentTarget.style.color = "#1C515A";
+    e.currentTarget.style.transform = "translateY(0)";        }}
+      >
+        120mm Film Collection
+      </a>
   <p
     style={{
       color: "#555",
