@@ -1,0 +1,29 @@
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import Main from "./pages/Main";
+import Resume from "./pages/Resume";
+import Film35mm from "./pages/Film35mm";
+import Film120mm from "./pages/Film120mm";
+import MPBSDP from "./pages/MPBSDP";
+import PShop from "./pages/pshop.jsx";
+import Sundays_2026 from "./pages/sundays_2026.jsx";
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/resume" element={<Resume />} />
+        <Route path="/35mm" element={<Film35mm />} />
+        <Route path="/120mm" element={<Film120mm />} />
+        <Route path="/mpbsdp" element={<MPBSDP />} />
+        <Route path="/pshop" element={<PShop />} />
+        <Route path="/sundays_2026" element={<Sundays_2026 />} />
+
+        {/* ⭐ This line fixes your Main page */}
+        <Route path="*" element={<Main />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
