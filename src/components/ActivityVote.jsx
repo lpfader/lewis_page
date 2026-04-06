@@ -1,13 +1,25 @@
 import { useState } from "react";
 
-function ActivityVote({ activity }) {
+function ActivityVote({ activity, dateKey }) {
   const [initials, setInitials] = useState("");
   const [submitted, setSubmitted] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmitted(initials.trim());
+
+    const trimmed = initials.trim();
+    setSubmitted(trimmed);
     setInitials("");
+
+    // Load existing votes
+    const stored = JSON.parse(localStorage.getItem("votes_2026") || "{}");
+
+    // Ensure date + activity structure exists
+    if (!stored[dateKey]) stored[dateKey] = {};
+    stored[dateKey][activity] = trimmed;
+
+    // Save back to localStorage
+    localStorage.setItem("votes_2026", JSON.stringify(stored));
   };
 
   return (
