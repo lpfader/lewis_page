@@ -6,6 +6,7 @@ import Film120mm from "./pages/Film120mm";
 import MPBSDP from "./pages/MPBSDP";
 import PShop from "./pages/pshop.jsx";
 import Sundays_2026 from "./pages/sundays_2026.jsx";
+import Showcase from "./pages/Showcase.jsx";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
         <Route path="/mpbsdp" element={<MPBSDP />} />
         <Route path="/pshop" element={<PShop />} />
         <Route path="/sundays_2026" element={<Sundays_2026 />} />
-
+        <Route path="/showcase" element={<Showcase />} />
         {/* ⭐ This line fixes your Main page */}
         <Route path="*" element={<Main />} />
       </Routes>

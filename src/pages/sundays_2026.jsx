@@ -38,8 +38,9 @@ const activities = [
   { name: "Downey's Farm", url: "https://downeysfarm.com/" },
   { name: "Metro Convention Centre (for events)", url: "https://www.mtccc.com/" },
   { name: "Toronto Islands", url: "https://www.torontoisland.com/" },
-  { name: "Mississauga International Centre (for events)", url: "https://internationalcentre.com/" }
-];
+  { name: "Mississauga International Centre (for events)", url: "https://internationalcentre.com/" },
+  { name: "NEB's Fun World", url: "https://www.nebsfunworld.com/" }
+  ];
 
 export default function Sundays_2026() {
   const sundays = getSundays2026();
@@ -49,8 +50,7 @@ export default function Sundays_2026() {
     <div style={{ padding: "2rem", maxWidth: "800px", margin: "0 auto" }}>
       <h1 style={{ color: "#1C515A" }}>2026 Sunday Activities</h1>
       <p>Parents can vote on what they prefer for each Sunday.</p>
-      <p><Link to="#/votes_summary">View Votes Summary</Link></p>
-
+      
       {sundays.map((date) => {
         const dateKey = date.toISOString().split("T")[0];
 
