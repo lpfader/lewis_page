@@ -137,6 +137,49 @@ Photoshop Projects
       >
         120mm Film Collection
       </a>
+
+      <a
+        href="https://lpfader.github.io/lewis-coffee/"
+   style={{
+    marginTop: "20px",
+    color: "#1C515A",
+    fontSize: "20px",
+    textDecoration: "none",
+    transition: "color 0.3s ease, transform 0.3s ease"
+  }}
+  onMouseOver={(e) => {
+    e.currentTarget.style.color = "#0E2A30";
+    e.currentTarget.style.transform = "translateY(-3px)";
+  }}
+  onMouseOut={(e) => {
+    e.currentTarget.style.color = "#1C515A";
+    e.currentTarget.style.transform = "translateY(0)";
+        }}
+      >
+        My global Village Coffee House Project
+      </a>
+
+      <a
+        href="https://lpfader.github.io/lewis_memphis/"
+   style={{
+    marginTop: "20px",
+    color: "#1C515A",
+    fontSize: "20px",
+    textDecoration: "none",
+    transition: "color 0.3s ease, transform 0.3s ease"
+  }}
+  onMouseOver={(e) => {
+    e.currentTarget.style.color = "#0E2A30";
+    e.currentTarget.style.transform = "translateY(-3px)";
+  }}
+  onMouseOut={(e) => {
+    e.currentTarget.style.color = "#1C515A";
+    e.currentTarget.style.transform = "translateY(0)";
+        }}
+      >
+        My global Memphis Revival Project
+      </a>    
+
 <a
   href="https://lpfader.github.io/lewis_vue_page/#/"
   style={{
