@@ -156,7 +156,7 @@ Photoshop Projects
     e.currentTarget.style.transform = "translateY(0)";
         }}
       >
-        My global Village Coffee House Project
+        My Global Village Coffee House Project
       </a>
 
       <a
@@ -177,7 +177,7 @@ Photoshop Projects
     e.currentTarget.style.transform = "translateY(0)";
         }}
       >
-        My global Memphis Revival Project
+        My Memphis Revival Project
       </a>    
 
 <a
