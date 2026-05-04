@@ -23,7 +23,7 @@ export default function Resume() {
 
       <section>
         <h3>Content Manager, Online Business Banking</h3>
-          <p><em>BMO Financial, Toronto — February 2025&nbsp;– Present</em></p>
+          <p><em>BMO Financial, Toronto — February 2025&nbsp;&ndash;&nbsp;April 2026</em></p>
         
 
         <ul>
