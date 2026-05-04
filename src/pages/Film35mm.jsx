@@ -37,10 +37,8 @@ function FilmGrid({ folder, images }) {
 export default function Film35mm() {
   const images = [
 
-"000010.jpg",
 "000011-1.jpg",
 "000014.BMP",
-"000020.jpg",
 "000027.JPG",
 "000029.jpg",
 "000030.BMP",
