@@ -198,7 +198,7 @@ Photoshop Projects
     e.currentTarget.style.transform = "translateY(0)";
   }}
 >
-Link to my Vue project</a>  
+My Vue project</a>  
       <div
   style={{
     marginTop: "60px",

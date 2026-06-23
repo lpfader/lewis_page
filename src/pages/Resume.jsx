@@ -27,62 +27,63 @@ export default function Resume() {
         
 
         <ul>
-          <li>
-            Creating and optimizing email templates using HTML/CSS to ensure
-            responsive design and consistent brand experience across devices;
-            converting designs into responsive, cross-browser HTML, CSS, and
-            JavaScript.
-          </li>
-          <li>
-            Created, managed and migrated content to Contentful, ensuring
-            accuracy and alignment with communication objectives.
-          </li>
-          <li>
-            Leading and contributing to the technical side of web application
-            development projects, managing internal/external customer
-            relationships and creating solutions to meet business requirements.
-          </li>
-          <li>
-            Maintaining and updating websites using Content Management System
-            (CMS) in a timely manner using images, copy, and translations
-            provided by the Digital Content Team.
-          </li>
-          <li>
-            Conducting regular content audits to evaluate effectiveness and
-            relevance of existing materials.
-          </li>
-          <li>
-            Performing content gap analyses to determine missing or
-            underrepresented topics and recommend improvements.
-          </li>
-          <li>
-            Participating in code reviews, testing, and debugging and providing
-            support to content authors by addressing and resolving reported
-            issues.
-          </li>
-          <li>
-            Maintaining regular KPI tracking and reporting, feeding into various
-            internal and external communications as required.
-          </li>
-          <li>
-            Consistently monitoring, analyzing, optimizing and maintaining site
-            health (quality assurance, accessibility, and SEO) across OLBB web
-            pages.
-          </li>
-          <li>
-            Maintaining email compliance regulations in Canada & the U.S and
-            remaining current with email marketing industry updates and emerging
-            technologies.
-          </li>
-          <li>
-            Ensuring identical and consistent rendering across email service
-            providers, devices, and browsers.
-          </li>
-          <li>
-            Working within and managing third-party CMS platforms, integrating
-            back-end functionality as needed.
-          </li>
-        </ul>
+  <li>
+    Created and optimized email templates using HTML/CSS to ensure
+    responsive design and consistent brand experience across devices;
+    converted designs into responsive, cross-browser HTML, CSS, and
+    JavaScript.
+  </li>
+  <li>
+    Created, managed and migrated content to Contentful, ensuring
+    accuracy and alignment with communication objectives.
+  </li>
+  <li>
+    Led and contributed to the technical side of web application
+    development projects, managed internal/external customer
+    relationships and created solutions to meet business requirements.
+  </li>
+  <li>
+    Maintained and updated websites using Content Management System
+    (CMS) in a timely manner using images, copy, and translations
+    provided by the Digital Content Team.
+  </li>
+  <li>
+    Conducted regular content audits to evaluate effectiveness and
+    relevance of existing materials.
+  </li>
+  <li>
+    Performed content gap analyses to determine missing or
+    underrepresented topics and recommended improvements.
+  </li>
+  <li>
+    Participated in code reviews, testing, and debugging and provided
+    support to content authors by addressing and resolving reported
+    issues.
+  </li>
+  <li>
+    Maintained regular KPI tracking and reporting, feeding into various
+    internal and external communications as required.
+  </li>
+  <li>
+    Consistently monitored, analyzed, optimized and maintained site
+    health (quality assurance, accessibility, and SEO) across OLBB web
+    pages.
+  </li>
+  <li>
+    Maintained email compliance regulations in Canada & the U.S and
+    remained current with email marketing industry updates and emerging
+    technologies.
+  </li>
+  <li>
+    Ensured identical and consistent rendering across email service
+    providers, devices, and browsers.
+  </li>
+  <li>
+    Worked within and managed third-party CMS platforms, integrating
+    back-end functionality as needed.
+  </li>
+</ul>
+
       </section>
       
 <Tealline />
