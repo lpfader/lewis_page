@@ -24,14 +24,14 @@ export default function PShop() {
   return (
     <>
      <PShopDescription />
-      {/* Image Grid */}
+      {/* Image column */}
       <div
         style={{
           padding: "40px",
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))",
-          gap: "20px",
-          justifyItems: "center"
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "32px"
         }}
       >
         {images.map((src, i) => (
@@ -40,7 +40,8 @@ export default function PShop() {
             src={src}
             alt={`Photoshop project ${i + 1}`}
             style={{
-              width: "180px",
+              width: "100%",
+              maxWidth: "600px",
               height: "auto",
               borderRadius: "8px",
               boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
