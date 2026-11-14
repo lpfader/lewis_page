@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ParentVoteButton from "../components/ParentVoteButton";
+import { castVote, getMyVotes, retractVote } from "../lib/votes";
 
 function getSundays2026() {
   const year = 2026;
@@ -46,11 +48,77 @@ export default function Sundays_2026() {
   const sundays = getSundays2026();
   const today = new Date();
 
+  // One load for the whole page: { "2026-01-04|Zoo", ... }
+  const [myVotes, setMyVotes] = useState(() => new Set());
+  const [pending, setPending] = useState(() => new Set());
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    let active = true;
+    getMyVotes()
+      .then((votes) => {
+        if (active) setMyVotes(votes);
+      })
+      .catch((err) => {
+        if (active) setError(err.message);
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  async function handleToggle(dateKey, activity) {
+    const key = `${dateKey}|${activity}`;
+    if (pending.has(key)) return;
+
+    const wasVoted = myVotes.has(key);
+
+    // Optimistic: flip the button immediately, roll back if the call fails.
+    setMyVotes((prev) => {
+      const next = new Set(prev);
+      if (wasVoted) next.delete(key);
+      else next.add(key);
+      return next;
+    });
+    setPending((prev) => new Set(prev).add(key));
+    setError("");
+
+    try {
+      if (wasVoted) await retractVote(dateKey, activity);
+      else await castVote(dateKey, activity);
+    } catch (err) {
+      setMyVotes((prev) => {
+        const next = new Set(prev);
+        if (wasVoted) next.add(key);
+        else next.delete(key);
+        return next;
+      });
+      setError(`Could not save your vote. ${err.message}`);
+    } finally {
+      setPending((prev) => {
+        const next = new Set(prev);
+        next.delete(key);
+        return next;
+      });
+    }
+  }
+
   return (
     <div style={{ padding: "2rem", maxWidth: "800px", margin: "0 auto" }}>
       <h1 style={{ color: "#1C515A" }}>2026 Sunday Activities</h1>
       <p>Parents can vote on what they prefer for each Sunday.</p>
-      
+      <p style={{ fontSize: "15px" }}>
+        <Link to="/votes" style={{ color: "#1C515A" }}>
+          See what everyone has picked so far →
+        </Link>
+      </p>
+
+      {error && (
+        <p role="alert" style={{ color: "#a33", fontSize: "15px" }}>
+          {error}
+        </p>
+      )}
+
       {sundays.map((date) => {
         const dateKey = date.toISOString().split("T")[0];
 
@@ -81,29 +149,37 @@ export default function Sundays_2026() {
                 maxWidth: "400px",
               }}
             >
-{activities.map(({ name, url }) => (
-  <div
-    key={name}
-    style={{
-      marginBottom: "10px",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-      maxWidth: "400px",
-    }}
-  >
-    <a
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
-      style={{ color: "#1C515A", textDecoration: "none", fontWeight: "bold" }}
-    >
-      {name}
-    </a>
+              {activities.map(({ name, url }) => {
+                const key = `${dateKey}|${name}`;
 
-    <ParentVoteButton dateKey={dateKey} activity={name} />
-  </div>
-))}
+                return (
+                  <div
+                    key={name}
+                    style={{
+                      marginBottom: "10px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      maxWidth: "400px",
+                    }}
+                  >
+                    <a
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: "#1C515A", textDecoration: "none", fontWeight: "bold" }}
+                    >
+                      {name}
+                    </a>
+
+                    <ParentVoteButton
+                      voted={myVotes.has(key)}
+                      disabled={pending.has(key)}
+                      onToggle={() => handleToggle(dateKey, name)}
+                    />
+                  </div>
+                );
+              })}
             </div>
           </section>
         );
