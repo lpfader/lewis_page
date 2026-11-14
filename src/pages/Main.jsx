@@ -157,6 +157,29 @@ Photoshop Projects
   }}
 >
 My Vue project</a>  
+<a
+  href={`${import.meta.env.BASE_URL}computer-chronicles-guests.html`}
+  target="_blank"
+  rel="noopener noreferrer"
+  style={{
+    marginTop: "20px",
+    color: "#1C515A",
+    fontSize: "20px",
+    textDecoration: "none",
+    transition: "color 0.3s ease, transform 0.3s ease"
+  }}
+  onMouseOver={(e) => {
+    e.currentTarget.style.color = "#0E2A30";
+    e.currentTarget.style.transform = "translateY(-3px)";
+  }}
+  onMouseOut={(e) => {
+    e.currentTarget.style.color = "#1C515A";
+    e.currentTarget.style.transform = "translateY(0)";
+  }}
+>
+  Computer Chronicles: The Guest List
+</a>
+
       <div
   style={{
     marginTop: "60px",
