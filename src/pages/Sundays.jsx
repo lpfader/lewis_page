@@ -1,52 +1,28 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import ParentVoteButton from "../components/ParentVoteButton";
+import { activities } from "../lib/activities";
+import { availableYears, toDateKey, upcomingSundays } from "../lib/sundays";
 import { castVote, getMyVotes, retractVote } from "../lib/votes";
 
-function getSundays2026() {
-  const year = 2026;
-  const sundays = [];
-  const d = new Date(year, 0, 1);
+export default function Sundays() {
+  const { year } = useParams();
+  const navigate = useNavigate();
 
-  while (d.getDay() !== 0) {
-    d.setDate(d.getDate() + 1);
-  }
+  // No hardcoded year: the route defaults to the current one, and the picker
+  // asks the helpers for this year + next, so January rolls over by itself.
+  const currentYear = new Date().getFullYear();
+  const parsed = Number(year);
+  const selectedYear =
+    Number.isInteger(parsed) && parsed > 1970 ? parsed : currentYear;
 
-  while (d.getFullYear() === year) {
-    sundays.push(new Date(d));
-    d.setDate(d.getDate() + 7);
-  }
+  const upcoming = upcomingSundays(selectedYear);
 
-  return sundays;
-}
-
-const activities = [
-  { name: "Legoland", url: "https://www.legolanddiscoverycentre.ca/toronto/" },
-  { name: "Wychwood Theatre", url: "https://www.wychwoodtheatre.com/" },
-  { name: "Movie at Woodbine Cinema", url: "https://www.cinestarz.ca/movie-theater/deluxewoodbine" },
-  { name: "Gathering Wild", url: "https://www.gatheringwild.ca/" },
-  { name: "Zoo", url: "https://www.torontozoo.com/" },
-  { name: "Playground", url: "https://www.toronto.ca/explore-enjoy/parks-gardens-beaches/" },
-  { name: "Make Pizza at Dufferin Grove", url: "https://dufferinpark.ca/home/wiki/wiki.php" },
-  { name: "Fallsview Waterpark", url: "https://www.fallsviewwaterpark.com/" },
-  { name: "Oshawa Car Museum", url: "https://www.canadianautomotivemuseum.com/" },
-  { name: "High Park", url: "https://www.highparktoronto.com/" },
-  { name: "Sea the Sky (Aquarium & CN Tower)", url: "https://www.cntower.ca/seathesky" },
-  { name: "Whatever Street Festival is Happening", url: "https://www.toronto.ca/explore-enjoy/festivals-events/" },
-  { name: "Community Centre Swimming", url: "https://www.toronto.ca/explore-enjoy/recreation/swimming/" },
-  { name: "OHL Game", url: "https://ontariohockeyleague.com/" },
-  { name: "Chudleighs' Farm", url: "https://www.chudleighs.com/" },
-  { name: "Springridge Farm", url: "https://springridgefarm.com/" },
-  { name: "Downey's Farm", url: "https://downeysfarm.com/" },
-  { name: "Metro Convention Centre (for events)", url: "https://www.mtccc.com/" },
-  { name: "Toronto Islands", url: "https://www.torontoisland.com/" },
-  { name: "Mississauga International Centre (for events)", url: "https://internationalcentre.com/" },
-  { name: "NEB's Fun World", url: "https://www.nebsfunworld.com/" }
-  ];
-
-export default function Sundays_2026() {
-  const sundays = getSundays2026();
-  const today = new Date();
+  // Keep a bookmarked year selectable even if it sits outside the window.
+  const baseYears = availableYears();
+  const years = baseYears.includes(selectedYear)
+    ? baseYears
+    : [...baseYears, selectedYear].sort((a, b) => a - b);
 
   // One load for the whole page: { "2026-01-04|Zoo", ... }
   const [myVotes, setMyVotes] = useState(() => new Set());
@@ -73,7 +49,7 @@ export default function Sundays_2026() {
 
     const wasVoted = myVotes.has(key);
 
-    // Optimistic: flip the button immediately, roll back if the call fails.
+    // Optimistic: flip immediately, roll back if the call fails.
     setMyVotes((prev) => {
       const next = new Set(prev);
       if (wasVoted) next.delete(key);
@@ -105,7 +81,7 @@ export default function Sundays_2026() {
 
   return (
     <div style={{ padding: "2rem", maxWidth: "800px", margin: "0 auto" }}>
-      <h1 style={{ color: "#1C515A" }}>2026 Sunday Activities</h1>
+      <h1 style={{ color: "#1C515A" }}>{selectedYear} Sunday Activities</h1>
       <p>Parents can vote on what they prefer for each Sunday.</p>
       <p style={{ fontSize: "15px" }}>
         <Link to="/votes" style={{ color: "#1C515A" }}>
@@ -113,16 +89,52 @@ export default function Sundays_2026() {
         </Link>
       </p>
 
+      <nav
+        aria-label="Choose year"
+        style={{ margin: "16px 0", display: "flex", gap: "8px" }}
+      >
+        {years.map((y) => {
+          const active = y === selectedYear;
+          return (
+            <button
+              key={y}
+              type="button"
+              onClick={() => navigate(`/sundays/${y}`)}
+              aria-current={active ? "page" : undefined}
+              style={{
+                padding: "6px 14px",
+                borderRadius: "6px",
+                font: "inherit",
+                fontSize: "15px",
+                cursor: "pointer",
+                border: active ? "1px solid #1C515A" : "1px solid #bbb",
+                background: active ? "#1C515A" : "transparent",
+                color: active ? "#fff" : "inherit",
+              }}
+            >
+              {y}
+            </button>
+          );
+        })}
+      </nav>
+
       {error && (
         <p role="alert" style={{ color: "#a33", fontSize: "15px" }}>
           {error}
         </p>
       )}
 
-      {sundays.map((date) => {
-        const dateKey = date.toISOString().split("T")[0];
+      {upcoming.length === 0 && (
+        <p>
+          No upcoming Sundays left in {selectedYear}.{" "}
+          <Link to={`/sundays/${selectedYear + 1}`} style={{ color: "#1C515A" }}>
+            Look ahead to {selectedYear + 1} →
+          </Link>
+        </p>
+      )}
 
-        if (date < today) return null;
+      {upcoming.map((date) => {
+        const dateKey = toDateKey(date);
 
         return (
           <section

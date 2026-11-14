@@ -44,7 +44,7 @@ export default function VotesSummary() {
     <div style={{ padding: "2rem", maxWidth: "800px", margin: "0 auto" }}>
       <h1 style={{ color: "#1C515A" }}>Where Parents Want to Go</h1>
       <p style={{ fontSize: "15px" }}>
-        <Link to="/sundays_2026" style={{ color: "#1C515A" }}>
+        <Link to="/sundays" style={{ color: "#1C515A" }}>
           ← Back to voting
         </Link>
       </p>

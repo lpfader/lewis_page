@@ -39,7 +39,7 @@ export default function Main() {
         RESTful API I created for the McMaster Full-stack developer program
       </a>
 <a
-  href="#/sundays_2026"
+  href="#/sundays"
   style={{
     marginTop: "20px",
     color: "#1C515A",
@@ -56,7 +56,7 @@ export default function Main() {
     e.currentTarget.style.transform = "translateY(0)";
   }}
 >
-2026 Sunday Activities
+Sunday Activities
 </a>  
 <a
   href="#/mpbsdp"

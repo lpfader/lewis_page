@@ -4,8 +4,9 @@ import { supabase, isConfigured } from "./supabase";
 const TOKEN_KEY = "voter_token";
 
 // Fallback store used only when no Supabase project is configured, so that a
-// build without env vars still behaves the way the old site did.
-const LOCAL_KEY = "parent_votes_2026";
+// build without env vars still behaves the way the old site did. Not year
+// specific: the Sunday date itself is part of every entry.
+const LOCAL_KEY = "parent_votes_fallback";
 
 export function getVoterToken() {
   let token = localStorage.getItem(TOKEN_KEY);
